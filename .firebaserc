@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "navi-todolist": {
+      "hosting": {
+        "firebase-todolist": [
+          "navi-todolist"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "navi-todolist"
+  }
+}
