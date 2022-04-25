@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { Firestore, collectionData, collection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { doc, onSnapshot } from "firebase/firestore";
+import { MatButtonModule } from '@angular/material/button';
+import { doc, setDoc } from '@firebase/firestore';
+
 
 @Component({
   selector: 'app-root',
@@ -12,8 +14,9 @@ export class AppComponent {
 
   todos$: Observable<any>;
   todos;
+  todotext = '';
 
-  constructor(firestore: Firestore) {
+  constructor(private firestore: Firestore) {
 
     const coll = collection(firestore, 'todo');
     this.todos$ = collectionData(coll);
@@ -23,5 +26,14 @@ export class AppComponent {
       console.log('new from Firebase', this.todos);
 
     });
+  }
+
+  // to do add in Firebase
+  addToDo(){
+    // mit coll griefen wir collection todo in firestone an
+    const coll = collection(this.firestore, 'todo');
+
+    // mit setdoc speichern wir es in Firebase
+    setDoc(doc(coll), {name: this.todotext});
   }
 }

@@ -1,7 +1,10 @@
 <h1>Todo-Liste</h1>
+<!--ngmodel ist wie document.gelbyId('').value-->
+<input [(ngModel)]="todotext" type="text" name="">
+<button mat-button color="primary" (click)="addToDo()">Add</button>
 
 <ul>
-    <li *ngFor="let todo of todos;">
+    <li *ngFor="let todo of todos$ | async;">
         {{ todo['name'] }}
     </li>
 </ul>
