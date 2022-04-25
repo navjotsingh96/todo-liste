@@ -11,7 +11,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 export class AppComponent {
 
   todos$: Observable<any>;
-
+  todos;
 
   constructor(firestore: Firestore) {
 
@@ -19,7 +19,8 @@ export class AppComponent {
     this.todos$ = collectionData(coll);
 
     this.todos$.subscribe( (todos)=>{
-      console.log('new from Firebase', todos);
+      this.todos = todos;
+      console.log('new from Firebase', this.todos);
 
     });
   }
